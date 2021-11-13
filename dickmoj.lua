@@ -265,7 +265,7 @@ local ffi_cast = ffi.cast
 local testtttttt = ui.new_label("AA", "Anti-aimbot angles", " ")
 local testtttt = ui.new_label("Lua", "B", " KvasiboAA")
 local testttt = ui.new_label("AA", "Anti-aimbot angles", " ")
-local testt = ui.new_label("Lua", "B", "--------------------20.11.2021----------")
+local testt = ui.new_label("Lua", "B", "-----------------20.11.2021--------------")
 local test = ui.new_label("Lua", "B", "Color")
 local aa_pitch = ui_reference("AA", "Anti-aimbot angles", "Pitch")
 local aa_yaw, aa_yaw_offset = ui_reference("AA", "Anti-aimbot angles", "Yaw")
@@ -701,4 +701,3 @@ client.set_event_callback(
     client_set_event_callback("shutdown", function()
         set_og_menu(true)
     end)
-	
