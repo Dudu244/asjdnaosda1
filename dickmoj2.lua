@@ -1,4 +1,4 @@
-local enable = ui.new_checkbox("AA", "Other", "[beta] Kvasibo Resolver")
+local enable = ui.new_checkbox("AA", "Other", "Kvasibo Resolver")
 
 local angles = { [0] = -58, [1] = 58, [2] = -48, [3] = 48, [4] = -40, [5] = 40, [6] = -15, [7] = 15, [8] = -30, [9] = 30, [10] = -19, [11] = 19, [12] = 0 } -- magic values
 local last_angle = 0
