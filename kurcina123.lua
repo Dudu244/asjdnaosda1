@@ -1156,7 +1156,7 @@ local function handleINDICATORS()
         setTableVisibility({menu_watermark, wm_color, bodyyawind, aaind, circle_color}, false)
     end
 end
-local label = ui.new_label("Lua", "B", "                     ~~ [relase 14.11.2021] ~~         ")
+local label = ui.new_label("Lua", "B", "                     ~~ [release 14.11.2021] ~~         ")
 local h_label1 = ui.new_label("Lua", "B", "KVASIBO")
 local h_label2 = ui.new_label("Lua", "B", "Current version: "..version.." ")
 -------------------------------indicators ends here--------------------
