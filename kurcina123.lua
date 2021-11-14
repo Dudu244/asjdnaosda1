@@ -173,110 +173,14 @@ local enable2 = ui.new_checkbox("Lua", "B", "Pitch on land")
 local fakelag = ui.reference("AA", "Fake lag", "Limit")
 local misc_clantag_enabled = ui.new_checkbox("Lua", "B", "Clantag")
 local ground_ticks, end_time = 1, 0
-local checkbox = ui.new_checkbox('Lua', 'B', '[Kvasibo Ideal Tick]')
-local key = ui.new_hotkey('Lua', 'B', 'Ideal Tick Key')
-local edgeyawonideal = ui.new_checkbox('Lua', 'B', 'Edge Yaw Ideal Tick')
-local fakelagslider = ui.new_slider('AA', 'Fake lag', 'Limit', 1, 14, 1, true, 't')
-local edgeyaw = ui.reference('AA', 'Anti-aimbot angles', 'Edge yaw')
-local limit = ui.reference('AA', 'Fake lag', 'Limit')
-local dtlimit = ui.reference('Rage','Other','Double tap fake lag limit')
-local sv_maxusrcmdprocessticks   = ui.reference('Misc', 'Settings', 'sv_maxusrcmdprocessticks')
-local label1 = ui.new_label('Lua', 'B', 'Ideal Tick Color')
-local color = ui.new_color_picker('Lua', 'B', 'Ideal Tick Color', 255, 90, 90, 255)
-local width, height = client.screen_size()
-local center_width = width/2
-local center_height = height/2
 
-local function idealtickha(e)
-	shot = true
-
-    if ui.get(key) then
-        ui.set(dtlimit, 1)
-        ui.set(dtlimit, 5)
-        ui.set(dtlimit, 1)
-        if shot then
-            tick = globals.tickcount()
-
-            shot = false
-        else
-
-            if globals.tickcount() > tick + 4 then
-                ui.set(limit, 1)
-            else
-                ui.set(limit, 14)
-            end
-        end
-    end
-
-    if ui.get(key) then
-        ui.set(limit, 1)
-    else
-        ui.set(limit, ui.get(fakelagslider))
-    end
-
-    if ui.get(edgeyawonideal) then
-        if ui.get(key) then
-            ui.set(edgeyaw, true)
-        else
-            ui.set(edgeyaw, false)
-        end
+local function handleMISC()
+    if ui.get(selectbox) == "MISC" and ui.get(masterswitch) then
+        setTableVisibility({enable, enable2, misc_clantag_enabled}, true)
+    else 
+        setTableVisibility({enable, enable2, misc_clantag_enabled}, false)
     end
 end
-
-local function hideshit()
-	if ui.get(checkbox) == false then
-		ui.set_visible(key, false)
-		ui.set_visible(fakelagslider, false)
-		ui.set_visible(edgeyawonideal, false)
-		ui.set_visible(color, false)
-		ui.set_visible(label1, false)
-	elseif ui.get(checkbox) == true then
-		ui.set_visible(key, true)
-		ui.set_visible(fakelagslider, true)
-		ui.set_visible(edgeyawonideal, true)
-		ui.set_visible(color, true)
-		ui.set_visible(label1, true)
-	end
-end
-client.set_event_callback('setup_command', hideshit)
-
-local function indicators(setup)
-	local local_player = entity.get_local_player()
-	local active_weapon = entity.get_prop(local_player, "m_hActiveWeapon")
-	local nextAttack = entity.get_prop(local_player,"m_flNextAttack") 
-	local nextShot = entity.get_prop(active_weapon,"m_flNextPrimaryAttack")
-	local nextShotSecondary = entity.get_prop(active_weapon,"m_flNextSecondaryAttack")
-
-	local color1 = {ui.get(color)}
-	if ui.get(checkbox) == true then
-
-		if entity.is_alive(entity.get_local_player()) then
-			if active_weapon == nil then
-        return
-    end
-    if nextAttack == nil or nextShot == nil or nextShotSecondary == nil then
-        return
-    end
-    nextAttack = nextAttack + 0.5
-	nextShot = nextShot + 0.5
-	nextShotSecondary = nextShotSecondary + 0.5
-		if ui.get(key) then
-			if math.max(nextShot,nextShotSecondary) - globals.curtime() > 0.00  then
-				renderer.text(center_width, center_height+20, 255, 255, 255, 255, '-', nil, 'IDEAL TICK: CHARGING')
-			elseif math.max(nextShot,nextShotSecondary) - globals.curtime() < 0.00  then
-            	renderer.text(center_width, center_height-20, color1[1], color1[2], color1[3],  255, '-', nil,'IDEAL TICK: CHARGED')
-            elseif math.max(nextShot,nextShotSecondary) < nextAttack then
-            	if nextAttack - globals.curtime() > 0.00 then
-            	renderer.text(center_width, center_height+20, 255, 50, 50, 255, '-', nil, 'IDEAL TICK: SWAPPING')
-            end
-		else
-			return
-		end
-		end
-	end
-end
-end
-
 
 
 
