@@ -222,7 +222,6 @@ local function idealtickha(e)
         end
     end
 end
-client.set_event_callback('setup_command', idealtickha)
 
 local function hideshit()
 	if ui.get(checkbox) == false then
