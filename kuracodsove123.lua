@@ -21,7 +21,7 @@ local GameStateAPI = js.GameStateAPI
 local api = js.MyPersonaAPI
 local name = api.GetName()
 ----add player------------------------------
-if (playersteamid == Player1) then if (playersteamid == Player2) then
+if (playersteamid == Player1) then (playersteamid == Player2) if
 --------------------------------------------
 whitelistsucess = true
 client.color_log(180, 238, 0, '       <---<[\0')
