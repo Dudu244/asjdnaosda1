@@ -10,7 +10,6 @@ local strumlua4 = 0
 --------------------steamid3------------------------
 whitelistsucess = false
 local Player1 =  1073198628  --username--
-local Player2 =  1144086723  --username--
 ------^^steamID3^^-------
 local playerid = entity.get_local_player()
 if (playerid == nil) then return end
