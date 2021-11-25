@@ -298,7 +298,7 @@ local center = {screen[1]/2, screen[2]/2}
 
 local function paint()
     renderer.text(screen[1] - 92, 0, 255,255, 255, 255, nil, 0, "shoppy.gg/" )
-    renderer.text(screen[1] - 40, 0, 50, 255, 50, 255, nil, 0, "@amgis" )
+    renderer.text(screen[1] - 40, 0, 50, 255, 50, 255, nil, 0, "@helenasense" )
 end
 client.set_event_callback("paint", paint)
 
